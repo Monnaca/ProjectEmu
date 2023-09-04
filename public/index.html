@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./main.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -24,25 +23,42 @@
             prefix: "tw-"
         }
     </script>
-    <script src="./jquery-3.7.1.js.js"></script>
-    <script
-			src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"
-			integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-	></script>
+    <script src="./main.js"></script>
     <title>Happy Birthday EMUUUU🎂</title>
 </head>
 <body>
-    <div id="section-1" class="tw-bg-black tw-text-white tw-text-center tw-h-screen tw-flex tw-items-center tw-justify-center">
-        <div id="hh" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor" class="tw-inline-block tw-align-middle tw-w-[3px] tw-h-12"></div>
-        <div id="emu" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle tw-animate-bounce tw-absolute tw-bottom-[3vh]" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-          </svg>
-    </div>
-    <div id="section-2" class="tw-bg-white tw-h-screen tw-text-black tw-text-base">
-        <p style="font-size: 16px;">Section 2</p>
-    </div>
+    <section class="sectionScroll s-one" data-section-name="s-one">
+        <div class="tw-bg-black tw-text-white tw-text-center tw-h-screen tw-flex tw-items-center tw-justify-center">
+            <div id="hh" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor" class="tw-inline-block tw-align-middle tw-w-[3px] tw-h-12"></div>
+            <div id="emu" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor"></div>
+            <div class="sectionScroll s-one" data-section-name="s-one">
+                <span class="tw-inline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle tw-animate-bounce tw-absolute tw-bottom-[3vh]" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="sectionScroll s-two" data-section-name="s-two">
+        <div class="tw-bg-white tw-h-screen tw-text-black tw-text-base">
+            <p style="font-size: 16px;">Section 2</p>
+        </div>
+    </section>
+    <script src="./jquery-3.7.1.js.js"></script>
+    <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"
+		integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+    <script>
+        $(() => {
+            $.scrollify({
+                section:".sectionScroll",
+                scrollbars: false,
+            })
+        })
+    </script>
 </body>
 </html>
