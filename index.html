@@ -14,6 +14,17 @@
                 extend: {
                     space: {
                         '5px': '5px'
+                    },
+                    animation: {
+                        'blink': 'blink .6s linear infinite alternate'
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%' : {'opacity': '1'},
+                            '40%' : {'opacity': '1'},
+                            '60%' : {'opacity': '0'},
+                            '100%' : {'opacity': '0'},
+                        }
                     }
                 },
                 fontFamily: {
@@ -23,21 +34,19 @@
             prefix: "tw-"
         }
     </script>
-    <script src="./main.js"></script>
     <title>Happy Birthday EMUUUU🎂</title>
 </head>
 <body>
     <section class="sectionScroll s-one" data-section-name="s-one">
         <div class="tw-bg-black tw-text-white tw-text-center tw-h-screen tw-flex tw-items-center tw-justify-center">
-            <div id="hh" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor" class="tw-inline-block tw-align-middle tw-w-[3px] tw-h-12"></div>
-            <div id="emu" class="tw-text-base tw-m-1 tw-align-middle tw-tracking-wider tw-inline-block"></div><div id="cursor"></div>
-            <div class="sectionScroll s-one" data-section-name="s-one">
-                <span class="tw-inline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle tw-animate-bounce tw-absolute tw-bottom-[3vh]" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                    </svg>
-                </span>
+            <div class="typingContainer tw-justify-center tw-items-center">
+                <span id="sentence" class="sentence tw-text-4xl"></span>
+                <span id="name" class="tw-text-4xl"></span>
+                <span class="inputCursor tw-inline-block tw-w-0.5 tw-h-10 tw-bg-white tw-ml-2 tw-animate-blink"></span>
             </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle tw-flex tw-justify-center tw-items-center tw-animate-bounce tw-absolute tw-bottom-[3vh]" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
         </div>
     </section>
     <section class="sectionScroll s-two" data-section-name="s-two">
@@ -58,6 +67,42 @@
                 section:".sectionScroll",
                 scrollbars: false,
             })
+        })
+
+        async function sentenceWriter(sentence, elRef, delay=170) {
+            const letters = sentence.split("")
+            let i = 0
+            while(i < letters.length) {
+                await waitForMs(delay);
+                $(elRef).append(letters[i])
+                i++
+            }
+        }
+
+        async function sentenceEraser(elRef) {
+            const sentence = $(elRef).html()
+            const letters = sentence.split("")
+            let i = 0
+            while (letters.length > 0) {
+                await waitForMs(330)
+                letters.pop()
+                $(elRef).html(letters.join(""))
+            }
+        }
+
+        const waitForMs = (ms) => {return new Promise(resolve => setTimeout(resolve, ms))}
+
+        const nameList = ["えむ鳳", "えむおとり", "Emu Otori", "Emu!!!"]
+
+        $(document).ready(async function () {
+            await sentenceWriter("Happy Birthday ", "#sentence")
+            for (let i = 0; i <= 2; i++) {
+                setTimeout(1000)
+                await sentenceWriter(nameList[i], "#name")
+                waitForMs(300)
+                await sentenceEraser("#name")
+            }
+            await sentenceWriter(nameList[3], "#name")
         })
     </script>
 </body>
