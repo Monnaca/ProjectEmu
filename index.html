@@ -30,27 +30,26 @@
                 fontFamily: {
                     nunito: ['"Nunito Sans"', 'sans-serif']
                 }
-            },
-            prefix: "tw-"
+            }
         }
     </script>
     <title>Happy Birthday EMUUUU🎂</title>
 </head>
 <body>
     <section class="sectionScroll s-one" data-section-name="s-one">
-        <div class="tw-bg-black tw-text-white tw-text-center tw-h-screen tw-flex tw-items-center tw-justify-center">
-            <div class="typingContainer tw-justify-center tw-items-center">
-                <span id="sentence" class="sentence tw-text-4xl"></span>
-                <span id="name" class="tw-text-4xl"></span>
-                <span class="inputCursor tw-inline-block tw-w-0.5 tw-h-10 tw-bg-white tw-ml-2 tw-animate-blink"></span>
+        <div class="bg-black text-white text-center h-screen flex items-center justify-center">
+            <div class="typingContainer justify-center items-center md:text-sm">
+                <span id="sentence" class="sentence text-3xl lg:text-4xl inline-block"></span>
+                <span id="name" class="text-3xl lg:text-4xl inline-block"></span>
+                <span class="inputCursor inline-block w-px lg:w-0.5 h-8 lg:h-10 p-px bg-white ml-1 animate-blink"></span>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle tw-flex tw-justify-center tw-items-center tw-animate-bounce tw-absolute tw-bottom-[3vh]" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle flex justify-center items-center animate-bounce absolute bottom-[3vh]" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
             </svg>
         </div>
     </section>
     <section class="sectionScroll s-two" data-section-name="s-two">
-        <div class="tw-bg-white tw-h-screen tw-text-black tw-text-base">
+        <div class="bg-white h-screen text-black text-base">
             <p style="font-size: 16px;">Section 2</p>
         </div>
     </section>
@@ -99,7 +98,7 @@
             for (let i = 0; i <= 2; i++) {
                 setTimeout(1000)
                 await sentenceWriter(nameList[i], "#name")
-                waitForMs(300)
+                setTimeout(750)
                 await sentenceEraser("#name")
             }
             await sentenceWriter(nameList[3], "#name")
