@@ -77,16 +77,8 @@
             }
         })
 
-        const getToD = () => {
-            const todayTime = new Date().getHours()
-            if (todayTime => 6 && todayTime <= 17) {
-                $("#entranceBg").addClass("bg-white")
-            } else if (todayTime > 17 && todayTime <= 5) {
-                $("#entranceBg").addClass("bg-gray-900")
-            }
-        }
-
-        getToD()
+        const hours = new Date().getHours()
+        $("#entranceBg").addClass((hours <= 6 && hours >= 17) ? "bg-white" : "bg-gray-900")
 
         $(() => {
             $.scrollify({
