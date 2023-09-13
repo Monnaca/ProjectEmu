@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./src/css/animista.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,7 +18,9 @@
                         '5px': '5px'
                     },
                     animation: {
-                        'blink': 'blink .6s linear infinite alternate'
+                        'blink': 'blink .6s linear infinite alternate',
+                        'cday' : 'cday 2000ms linear',
+                        'cnight' : 'cnight 2s linear'
                     },
                     keyframes: {
                         blink: {
@@ -25,6 +28,34 @@
                             '40%' : {'opacity': '1'},
                             '60%' : {'opacity': '0'},
                             '100%' : {'opacity': '0'},
+                        },
+                        cday: {
+                            '0%' : {'background-color': '#2b2b2b', 'opacity' : '1'},
+                            '50%' : {'background-color': '#2b2b2b', 'opacity' : '1'},
+                            '75%' : {'background-color' : '#ffffff', 'opacity' : '1'},
+                            '100%' : {'background-color' : '#ffffff', 'opacity' : '1'},
+                        },
+                        cnight : {
+                            '0%' : {'background-color': '#ffffff'},
+                            '50%' : {'background-color' :'#ffffff'},
+                            '75%' : {'background-color' : '#2b2b2b'},
+                            '100%' : {'background-color' : '#2b2b2b'},
+                        },
+                        rotateIn : {
+                            '0%' : {
+                                "-webkit-transform" : "rotate(-45deg)",
+                                "transform" : "rotate(-45deg)",
+                                "-webkit-transform-origin" : "100% 0",
+                                "transform-origin" : "100% 0",
+                                "opacity" : "0"
+                            },
+                            '100%' : {
+                                "-webkit-transform" : "rotate(0)",
+                                "transform" : "rotate(0)",
+                                "-webkit-transform-origin" : "0 0",
+                                "transform-origin" : "0 0",
+                                "opacity" : "1"
+                            }
                         }
                     }
                 },
@@ -38,7 +69,7 @@
 </head>
 <body>
     <div id="entrance" class="z-[100] relative">
-        <div id="entranceBg" class="fixed inset-x-0 inset-y-0 opacity-100 transition-[all 600ms ease-out]">
+        <div id="entranceBg" class="fixed inset-x-0 inset-y-0 opacity-100 animate-cday">
             <div id="preloader" class="placeholder">
             </div>
         </div>
@@ -48,21 +79,33 @@
             <div class="bg-black text-white text-center h-screen flex items-center justify-center">
                 <div class="typingContainer justify-center items-center md:text-sm">
                     <span id="sentence" class="sentence text-3xl lg:text-4xl inline-block"></span>
-                    <span id="name" class="text-3xl lg:text-4xl inline-block"></span>
                     <span class="inputCursor inline-block w-px lg:w-0.5 h-8 lg:h-10 p-px bg-white ml-1 animate-blink"></span>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle justify-center items-center animate-bounce absolute bottom-[3vh]" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                </svg>
+                <button id="next-button" class="justify-center items-center absolute bottom-[3vh]">
+                    <svg id="next-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-down-circle animate-bounce" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                    </svg>
+                </button>
             </div>
         </section>
-        <section class="sectionScroll s-two" data-section-name="s-two">
+        <section class="sectionScroll s-two" id="s-two" data-section-name="s-two">
             <div class="bg-white h-screen text-black text-base">
                 <p style="font-size: 16px;">Section 2</p>
             </div>
         </section>
+        <section class="sectionScroll s-three" id="s-three" data-section-name="s-three">
+            <div class="bg-[#535353] h-screen w-screen text-white text-base">
+                <p class="text-base">Section 3</p>
+            </div>
+        </section>
+        <section class="sectionScroll s-four" data-section-name="s-four" id="credits">
+            <div class="bg-[#212121] h-screen w-screen">
+                <p class="text-base">Section 4</p>
+            </div>
+        </section>
     </div>
     <script src="./src/js/jquery-3.7.1.js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"
 		integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew=="
@@ -76,9 +119,9 @@
                 isMobile = true
             }
         })
-
+        
         const hours = new Date().getHours()
-        $("#entranceBg").addClass((hours <= 6 && hours >= 17) ? "bg-white" : "bg-gray-900")
+        //$("#entranceBg").addClass((hours >= 6 && hours <= 17) ? ["animate-bgChangeDay", "duration-[2000ms]", "ease-in-out"] : ["bg-ChangeNight", "duration-[2000ms]", "ease-in-out"])
 
         $(() => {
             $.scrollify({
@@ -107,8 +150,18 @@
                 $(elRef).html(letters.join(""))
             }
         }
-
+        
         const waitForMs = (ms) => {return new Promise(resolve => setTimeout(resolve, ms))}
+        
+        $('#entranceBg').one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+            $(this).remove("#entranceBg")
+            setInterval(sentenceWriter("Happy Birthday Emu", "#sentence"))
+        });
+        
+        $("#next-button").click(function() {
+            $.scrollify.move("#s-two")
+        })
+
     </script>
 </body>
 </html>
