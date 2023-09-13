@@ -154,6 +154,8 @@
             }
         })
         
+        const waitForMs = (ms) => {return new Promise( async (resolve) => setTimeout(resolve, ms))}
+
         const hours = new Date().getHours()
         //$("#entranceBg").addClass((hours >= 6 && hours <= 17) ? ["animate-bgChangeDay", "duration-[2000ms]", "ease-in-out"] : ["bg-ChangeNight", "duration-[2000ms]", "ease-in-out"])
 
@@ -185,8 +187,6 @@
                 $(elRef).html(letters.join(""))
             }
         }
-        
-        const waitForMs = (ms) => {return new Promise( async (resolve) => await setTimeout(resolve, ms))}
         
         $("#entranceLogo").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", () => {
         })
