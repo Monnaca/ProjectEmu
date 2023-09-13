@@ -16,7 +16,9 @@ module.exports = {
             animation: {
                 'blink': 'blink .6s linear infinite alternate',
                 'cday' : 'cday 2000ms linear',
-                'cnight' : 'cnight 2s linear'
+                'cnight' : 'cnight 2s linear',
+                'sil' : 'slideInLeft 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'
             },
             keyframes: {
                 blink: {
@@ -60,7 +62,21 @@ module.exports = {
                         "opacity" : "0",
                     },
                     '100%' : {
-
+                        "transform" : "translateY(0)",
+                        "-webkit-transform" : "translateY(0)",
+                        "opacity" : "1",
+                    }
+                },
+                slideInLeft: {
+                    "0%" : {
+                        "-webkit-transform": "translateX(-1000px)",
+                        "transform": "translateX(-1000px)",
+                        "opacity": "0"
+                    },
+                    "100%" : {
+                        "-webkit-transform" : "translateX(0)",
+                        "transform" : "translateX(0)",
+                        "opacity": "1"
                     }
                 }
             }
