@@ -18,7 +18,7 @@ module.exports = {
                 'cday' : 'cday 2000ms linear',
                 'cnight' : 'cnight 2s linear',
                 'sil' : 'slideInLeft 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'
+                'sib' : 'slideInBottom 3.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'
             },
             keyframes: {
                 blink: {
