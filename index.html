@@ -105,7 +105,8 @@
                                 'opacity': '0'
                             },
                             '100%': {
-                                'opacity': '0'
+                                'opacity': '0',
+                                'display': 'none'
                             }
                         }
                     }
@@ -211,13 +212,11 @@
         })
 
         async function sentenceWriter(sentence, elRef, delay=170) {
+            await new Promise(resolve => setTimeout(resolve, 1000))
             setTimeout(() => {console.log("Delayed for 1s")}, 2000)
-            const letters = sentence.split("")
-            let i = 0
-            while(i < letters.length) {
-                await waitForMs(delay);
-                $(elRef).append(letters[i])
-                i++
+            for (const letter of sentence) {
+                waitForMs(delay)
+                $(elRef).append(letter)
             }
         }
 
@@ -238,8 +237,13 @@
         
         $("#todLogo").one("animationend webkitAnimationEnd oAnimationEnd msAnimationEnd", () => {
             $("#entranceBg").addClass("animate-dsp")
-            setTimeout($("#entrance").remove(), 2000)
+            //setTimeout($("#entrance").remove(), 2000)
         })
+
+        const entranceStatus = document.getElementById("entrance")
+        if (window.getComputedStyle("#entrance").display == "none") {
+            $("#entrance").remove()
+        }
 
         $("#next-button").click(function() {
             $.scrollify.move("#s-two")
