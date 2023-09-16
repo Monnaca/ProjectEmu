@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./index.html",
-        "./src/js/*.js"
+        "./*.html",
+        "./src/js/*.{js, ejs, cjs}"
     ],
     theme: {
         extend: {
@@ -17,8 +17,10 @@ module.exports = {
                 'blink': 'blink .6s linear infinite alternate',
                 'cday' : 'cday 2000ms linear',
                 'cnight' : 'cnight 2s linear',
-                'sil' : 'slideInLeft 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                'sib' : 'slideInBottom 3.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'
+                'sil' : 'slideInLeft 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                'dsp': 'goesOut 3s ease-in-out forwards',
+                'rin': 'rotateIn 1.5s ease-in forwards'
             },
             keyframes: {
                 blink: {
@@ -77,6 +79,15 @@ module.exports = {
                         "-webkit-transform" : "translateX(0)",
                         "transform" : "translateX(0)",
                         "opacity": "1"
+                    }
+                },
+                goesOut: {
+                    '0%': {
+                        'opacity': '1'
+                    },
+                    '100%': {
+                        'opacity': '0',
+                        'display': 'none'
                     }
                 }
             }

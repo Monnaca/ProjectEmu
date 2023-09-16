@@ -10,12 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!--<link rel="stylesheet" href="./src/css/animate.min.css">
-    <link rel="stylesheet" href="./src/css/animista.css">-->
+    <link rel="stylesheet" href="./src/css/animista.css">
 
-    <!--<link rel="stylesheet" href="./src/css/style.css">
-    <link rel="stylesheet" href="./src/css/main.css">-->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/css/main.css">
+    <!--<script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -33,7 +31,7 @@
                         'cnight' : 'cnight 2s linear',
                         'sil' : 'slideInLeft 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
                         'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                        'dsp': 'goesOut 3s ease-in-out'
+                        'dsp': 'goesOut 3s ease-in-out forwards'
                     },
                     keyframes: {
                         blink: {
@@ -98,15 +96,8 @@
                             '0%': {
                                 'opacity': '1'
                             },
-                            '25%': {
-                                'opacity': '1'
-                            },
-                            '75%': {
-                                'opacity': '0'
-                            },
                             '100%': {
                                 'opacity': '0',
-                                'display': 'none'
                             }
                         }
                     }
@@ -116,7 +107,7 @@
                 }
             }
         }
-    </script>
+    </script>-->
     <title>Happy Birthday EMUUUU🎂</title>
 </head>
 <body>
@@ -154,7 +145,7 @@
                 </g>
             </svg>
             <div class="typingContainer justify-center items-center md:text-sm">
-                <span id="sentence" class="sentence text-3xl lg:text-4xl inline-block"></span>
+                <div id="sentence" class="sentence text-3xl lg:text-4xl inline-block"></div>
                 <span class="inputCursor inline-block w-px lg:w-0.5 h-8 lg:h-10 p-px bg-white ml-1 animate-blink"></span>
             </div>
             <button id="next-button" class=" justify-center items-center absolute bottom-[3vh]">
@@ -165,8 +156,10 @@
         </div>
     </section>
     <section class="sectionScroll s-two" id="s-two" data-section-name="s-two">
-        <div class="bg-lbg h-screen text-black text-base">
-            <p style="font-size: 16px;">Section 2</p>
+        <div class="bg-lbg h-screen text-black text-base flex">
+            <div>
+                <img alt="A Letter For You" id="img-let" src="./public/ALetterForYou.png" class=" w-40 lg:w-40 lg:h-60"/>
+            </div>
         </div>
     </section>
     <section class="sectionScroll s-three" id="s-three" data-section-name="s-three">
@@ -201,8 +194,6 @@
         })
         
         const HOURS = new Date().getHours()
-        
-        const waitForMs = (ms) => {return new Promise( async (resolve) => setTimeout(resolve, ms))}
 
         $(() => {
             $.scrollify({
@@ -211,39 +202,30 @@
             })
         })
 
-        async function sentenceWriter(sentence, elRef, delay=170) {
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            setTimeout(() => {console.log("Delayed for 1s")}, 2000)
-            for (const letter of sentence) {
-                waitForMs(delay)
-                $(elRef).append(letter)
+        const waitForMs = (ms) => {return new Promise( async (resolve) => setTimeout(resolve, ms))}
+
+        const typeWriter = (textData, speed) => {
+            let i = 0
+            while (i < textData.length) {
+                document.getElementById("sentence").innerHTML += textData.charAt(i)
+                i++
+                setInterval(typeWriter, speed)
             }
-        }
-
-        async function sentenceEraser(elementRef) {
-            const sentence = $(elementRef).html()
-            let letters = Array.from(sentence)
-            const INTERVAL = 330
-
-            const eraserInterval = setInterval(() => {
-                if (letters.length > 0) {
-                    letters.pop()
-                    $(elementRef).html(letters.join(""))
-                } else {
-                    clearInterval(eraserInterval)
-                }
-            }, INTERVAL)
         }
         
         $("#todLogo").one("animationend webkitAnimationEnd oAnimationEnd msAnimationEnd", () => {
             $("#entranceBg").addClass("animate-dsp")
+            
+            //setTimeout($("#entrance").remove(), 2000)
+        })
+        
+        $("#entranceBg").one("animationend webkitAnimationEnd oAnimationEnd msAnimationEnd", () => {
+            $("entranceBg").addClass("hidden")  
             //setTimeout($("#entrance").remove(), 2000)
         })
 
-        const entranceStatus = document.getElementById("entrance")
-        if (window.getComputedStyle("#entrance").display == "none") {
-            $("#entrance").remove()
-        }
+        const preBg = document.getElementById("entranceBg")
+        console.log("asda",preBg.style.display)
 
         $("#next-button").click(function() {
             $.scrollify.move("#s-two")
