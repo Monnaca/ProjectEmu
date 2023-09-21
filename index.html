@@ -13,101 +13,7 @@
     <link rel="stylesheet" href="./src/css/animista.css">
 
     <link rel="stylesheet" href="./src/css/main.css">
-    <!--<script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors : {
-                        "dbg" : "#212121",
-                        "lbg" : "#E0E0E0",
-                    },
-                    space: {
-                        '5px': '5px'
-                    },
-                    animation: {
-                        'blink': 'blink .6s linear infinite alternate',
-                        'cday' : 'cday 2000ms linear',
-                        'cnight' : 'cnight 2s linear',
-                        'sil' : 'slideInLeft 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                        'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                        'dsp': 'goesOut 3s ease-in-out forwards'
-                    },
-                    keyframes: {
-                        blink: {
-                            '0%' : {'opacity': '1'},
-                            '40%' : {'opacity': '1'},
-                            '60%' : {'opacity': '0'},
-                            '100%' : {'opacity': '0'},
-                        },
-                        cday: {
-                            '0%' : {'background-color': '#2b2b2b', 'opacity' : '1'},
-                            '50%' : {'background-color': '#2b2b2b', 'opacity' : '1'},
-                            '75%' : {'background-color' : '#ffffff', 'opacity' : '1'},
-                            '100%' : {'background-color' : '#ffffff', 'opacity' : '1'},
-                        },
-                        cnight : {
-                            '0%' : {'background-color': '#ffffff'},
-                            '50%' : {'background-color' :'#ffffff'},
-                            '75%' : {'background-color' : '#2b2b2b'},
-                            '100%' : {'background-color' : '#2b2b2b'},
-                        },
-                        rotateIn : {
-                            '0%' : {
-                                "-webkit-transform" : "rotate(-45deg)",
-                                "transform" : "rotate(-45deg)",
-                                "-webkit-transform-origin" : "100% 0",
-                                "transform-origin" : "100% 0",
-                                "opacity" : "0"
-                            },
-                            '100%' : {
-                                "-webkit-transform" : "rotate(0)",
-                                "transform" : "rotate(0)",
-                                "-webkit-transform-origin" : "0 0",
-                                "transform-origin" : "0 0",
-                                "opacity" : "1"
-                            }
-                        },
-                        slideInBottom: {
-                            '0%' : {
-                                "transform" : "translateY(1000px)",
-                                "-webkit-transform" : "translateY(1000px)",
-                                "opacity" : "0",
-                            },
-                            '100%' : {
-                                "transform" : "translateY(0)",
-                                "-webkit-transform" : "translateY(0)",
-                                "opacity" : "1",
-                            }
-                        },
-                        slideInLeft: {
-                            "0%" : {
-                                "-webkit-transform": "translateX(-1000px)",
-                                "transform": "translateX(-1000px)",
-                                "opacity": "0"
-                            },
-                            "100%" : {
-                                "-webkit-transform" : "translateX(0)",
-                                "transform" : "translateX(0)",
-                                "opacity": "1"
-                            }
-                        },
-                        goesOut: {
-                            '0%': {
-                                'opacity': '1'
-                            },
-                            '100%': {
-                                'opacity': '0',
-                            }
-                        }
-                    }
-                },
-                fontFamily: {
-                    nunito: ['"Nunito Sans"', 'sans-serif']
-                }
-            }
-        }
-    </script>-->
+    
     <title>Happy Birthday EMUUUU🎂</title>
 </head>
 <body>
@@ -156,9 +62,14 @@
         </div>
     </section>
     <section class="sectionScroll s-two" id="s-two" data-section-name="s-two">
-        <div class="bg-lbg h-screen text-black text-base flex">
+        <div class="bg-slate-800 h-screen text-white text-base flex">
             <div>
-                <img alt="A Letter For You" id="img-let" src="./public/ALetterForYou.png" class=" w-40 lg:w-40 lg:h-60"/>
+                <a href="#" id="letter-cover">
+                    <img alt="A Letter For You" id="img-let" src="./public/ALetterForYou.png" class=" w-40 lg:w-40 lg:h-60"/>
+                </a>
+            </div>
+            <div id="letterRil" class="w-40 lg:w-48 h-60 lg:h-64 bg-slate-300 border-4 border-black">
+
             </div>
         </div>
     </section>
@@ -173,26 +84,10 @@
         </div>
     </section>
     <script src="./src/js/jquery-3.7.1.js.js"></script>
-
     <script src="./src/js/anime.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>-->
-
     <script src="./src/js/jquery.scrollify.min.js"></script>
-    <!--<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"
-		integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew=="
-		crossorigin="anonymous"
-		referrerpolicy="no-referrer"
-	></script>-->
     <script src="./src/js/main.js"></script>
     <script>
-        let isMobile = false;
-        $(document).ready(() => {
-            if (window.matchMedia("(max-width: 1080px)").matches) {
-                isMobile = true
-            }
-        })
-        
         const HOURS = new Date().getHours()
 
         $(() => {
@@ -213,6 +108,12 @@
             }
         }
         
+        $("letter-cov").on("click", () => {
+            $("letter-cov").addClass("animate-sol")
+            $("letter-cov").remove()
+            $("letterRil").addClass("animate-sil")
+        })
+
         $("#todLogo").one("animationend webkitAnimationEnd oAnimationEnd msAnimationEnd", () => {
             $("#entranceBg").addClass("animate-dsp")
             

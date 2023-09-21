@@ -17,10 +17,11 @@ module.exports = {
                 'blink': 'blink .6s linear infinite alternate',
                 'cday' : 'cday 2000ms linear',
                 'cnight' : 'cnight 2s linear',
-                'sil' : 'slideInLeft 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-                'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                'sil' : 'slideInLeft 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards',
+                'sib' : 'slideInBottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards',
                 'dsp': 'goesOut 3s ease-in-out forwards',
-                'rin': 'rotateIn 1.5s ease-in forwards'
+                'rin': 'rotateIn 1.5s ease-in forwards',
+                'sol' : 'slideOutLeft 2s ease-out forwards'
             },
             keyframes: {
                 blink: {
@@ -73,12 +74,14 @@ module.exports = {
                     "0%" : {
                         "-webkit-transform": "translateX(-1000px)",
                         "transform": "translateX(-1000px)",
-                        "opacity": "0"
+                        "opacity": "0",
+                        'rotate' : '0deg'
                     },
                     "100%" : {
                         "-webkit-transform" : "translateX(0)",
                         "transform" : "translateX(0)",
-                        "opacity": "1"
+                        "opacity": "1",
+                        'rotate' : '-16deg'
                     }
                 },
                 goesOut: {
@@ -88,6 +91,18 @@ module.exports = {
                     '100%': {
                         'opacity': '0',
                         'display': 'none'
+                    }
+                },
+                slideOutLeft: {
+                    '0%' : {
+                        '-webkit-transform' : 'translateX(0)',
+                        'transform' : 'translateX(0)',
+                        'opacity' : '1'
+                    },
+                    '100%' : {
+                        '-webkit-transform' : 'translateX(-1000px)',
+                        'transform' : 'translateX(-1000px)',
+                        'opacity' : '0'
                     }
                 }
             }
